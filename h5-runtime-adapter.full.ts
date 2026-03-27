@@ -1,13 +1,13 @@
 import { fullQuestionBankConfig } from './h5-question-bank.full';
 import { fullQuestionContentBundle, fullQuestionContentRecords } from './h5-question-content.full';
-import { mockAssetRendererBundle } from './h5-asset-renderer.mock';
+import { fullAssetRendererBundle } from './h5-asset-renderer.full';
 import { createRuntimeQuestionPageViewModel, createRuntimeQuestionPageViewModels, type RuntimeAdapterDeps } from './h5-runtime-adapter';
 import type { ModuleId, QuestionRecord } from './h5-question-bank.types';
 
 export const fullRuntimeAdapterDeps: RuntimeAdapterDeps = {
   bank: fullQuestionBankConfig,
   contentBundle: fullQuestionContentBundle,
-  rendererBundle: mockAssetRendererBundle,
+  rendererBundle: fullAssetRendererBundle,
 };
 
 export const fullRuntimeQuestionPageMap = Object.fromEntries(

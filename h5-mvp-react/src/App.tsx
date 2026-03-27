@@ -8,6 +8,7 @@ import {
   fullRuntimeQuestionIdsByModule,
   fullRuntimeQuestionsByPaper,
 } from '../../h5-runtime-adapter.full';
+import { QuestionFigureRenderer } from './components/QuestionFigureRenderer';
 import { QuestionInteractionPanel } from './components/QuestionInteractionPanel';
 import { useRuntimeMachineDemo, type SessionPlan } from './hooks/useRuntimeMachineDemo';
 
@@ -568,20 +569,20 @@ function StemBlocks({
       {question.stem.map((item) => {
         const block = item.block;
         if (block.type === 'image') {
-          return (
-            <div key={block.id} className="resource-box">
-              <strong>{block.alt}</strong>
-              <span>imageKey: {block.imageKey}</span>
-              <span>{item.resolvedAsset?.path ?? '当前为占位资源，后续替换成真实素材。'}</span>
-            </div>
-          );
+          return <QuestionFigureRenderer key={block.id} question={question} item={item} />;
         }
 
         if (block.type === 'grid') {
           return (
-            <div key={block.id} className="resource-box">
+            <div key={block.id} className="resource-box grid-preview-box">
               <strong>题面网格 {block.rows}×{block.cols}</strong>
-              <span>已配置 {block.cells.length} 个格子模板</span>
+              <div className="mini-grid" style={{ gridTemplateColumns: `repeat(${block.cols}, minmax(24px, 1fr))` }}>
+                {block.cells.map((cell) => (
+                  <span key={cell.cellId} className={`mini-grid-cell ${cell.locked ? 'is-locked' : ''}`}>
+                    {cell.presetValue ?? ''}
+                  </span>
+                ))}
+              </div>
             </div>
           );
         }
