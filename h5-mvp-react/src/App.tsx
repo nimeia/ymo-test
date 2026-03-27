@@ -340,9 +340,11 @@ function PlayScreen({
   onClearSnapshot: () => void;
 }) {
   const currentQuestion = state.currentQuestion;
+  const currentQuestionState = state.currentQuestionState;
   const draft = state.currentQuestionId ? state.draftByQuestionId[state.currentQuestionId]?.answer : undefined;
-  const timer = state.currentQuestionState?.timer;
+  const timer = currentQuestionState?.timer;
   const remainingSeconds = timer?.remainingMs ? Math.max(0, Math.ceil(timer.remainingMs / 1000)) : undefined;
+  const latestJudgeResult = currentQuestionState?.latestJudgeResult ?? state.lastJudgeResult;
 
   return (
     <main className="play-layout">
@@ -373,6 +375,8 @@ function PlayScreen({
               <StemBlocks
                 question={currentQuestion}
                 draft={draft}
+                reviewVisible={state.reviewVisible}
+                judgeResult={latestJudgeResult}
                 onDraftChange={(answer) =>
                   onEmit('CHANGE_DRAFT', {
                     questionId: currentQuestion.questionId,
@@ -456,11 +460,27 @@ function PlayScreen({
           {currentQuestion ? (
             <>
               <p className="review-title">{currentQuestion.review.explanation.summary}</p>
-              <ul className="meta-list">
-                {currentQuestion.review.explanation.steps.map((step) => (
-                  <li key={step.id}>{step.title}</li>
+              <div className={`review-status-banner ${state.reviewVisible ? 'is-open' : ''}`}>
+                {state.reviewVisible ? '当前已打开解析；图形题会在题图区逐步闪示答案。' : '点击“看解析”后，会进入图上答案回放。'}
+              </div>
+              <ul className="review-step-list">
+                {currentQuestion.review.explanation.steps.map((step, index) => (
+                  <li key={step.id}>
+                    <strong>{index + 1}. {step.title}</strong>
+                    <p>{step.text}</p>
+                  </li>
                 ))}
               </ul>
+              {latestJudgeResult && !latestJudgeResult.correct && latestJudgeResult.feedback.length ? (
+                <div className="review-feedback-box">
+                  <strong>本次错因提示</strong>
+                  <ul className="meta-list compact">
+                    {latestJudgeResult.feedback.map((item) => (
+                      <li key={`${item.code}-${item.title}`}>{item.title}：{item.text}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
             </>
           ) : (
             <p>暂无解析</p>
@@ -574,10 +594,14 @@ function WrongBookScreen({
 function StemBlocks({
   question,
   draft,
+  reviewVisible,
+  judgeResult,
   onDraftChange,
 }: {
   question: NonNullable<NonNullable<ReturnType<typeof useRuntimeMachineDemo>['state']>['currentQuestion']>;
   draft?: RuntimeSubmissionAnswer;
+  reviewVisible?: boolean;
+  judgeResult?: NonNullable<NonNullable<ReturnType<typeof useRuntimeMachineDemo>['state']>['lastJudgeResult']>;
   onDraftChange: (answer: RuntimeSubmissionAnswer | undefined) => void;
 }) {
   return (
@@ -585,7 +609,17 @@ function StemBlocks({
       {question.stem.map((item) => {
         const block = item.block;
         if (block.type === 'image') {
-          return <QuestionFigureRenderer key={block.id} question={question} item={item} draft={draft} onChange={onDraftChange} />;
+          return (
+            <QuestionFigureRenderer
+              key={block.id}
+              question={question}
+              item={item}
+              draft={draft}
+              reviewVisible={reviewVisible}
+              judgeResult={judgeResult}
+              onChange={onDraftChange}
+            />
+          );
         }
 
         if (block.type === 'grid') {
