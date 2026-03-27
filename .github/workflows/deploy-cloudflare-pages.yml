@@ -1,0 +1,96 @@
+name: Deploy h5-mvp-react to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  APP_DIR: h5-mvp-react
+  BUILD_DIR: dist
+  NODE_VERSION: '20'
+  CLOUDFLARE_PAGES_PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Cloudflare Pages project name
+        run: |
+          if [ -z "${CLOUDFLARE_PAGES_PROJECT_NAME}" ]; then
+            echo "Missing repository variable: CLOUDFLARE_PAGES_PROJECT_NAME" >&2
+            exit 1
+          fi
+
+      - name: Validate Cloudflare credentials
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "Missing repository secret: CLOUDFLARE_ACCOUNT_ID" >&2
+            exit 1
+          fi
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "Missing repository secret: CLOUDFLARE_API_TOKEN" >&2
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        working-directory: ${{ env.APP_DIR }}
+        run: npm install
+
+      - name: Build site
+        working-directory: ${{ env.APP_DIR }}
+        run: npm run build
+
+      - name: Deploy production
+        if: (github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')) || github.event_name == 'workflow_dispatch'
+        id: deploy-production
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ${{ env.APP_DIR }}
+          command: pages deploy ${{ env.BUILD_DIR }} --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT_NAME }}
+
+      - name: Print production URL
+        if: steps.deploy-production.outcome == 'success'
+        run: |
+          echo "Production deployment: ${{ steps.deploy-production.outputs.deployment-url }}"
+
+      - name: Deploy preview
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        id: deploy-preview
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ${{ env.APP_DIR }}
+          command: pages deploy ${{ env.BUILD_DIR }} --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT_NAME }} --branch=pr-${{ github.event.pull_request.number }}
+
+      - name: Print preview URL
+        if: steps.deploy-preview.outcome == 'success'
+        run: |
+          echo "Preview deployment: ${{ steps.deploy-preview.outputs.deployment-url }}"
+          echo "Preview alias: ${{ steps.deploy-preview.outputs.pages-deployment-alias-url }}"
