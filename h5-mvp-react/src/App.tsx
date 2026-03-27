@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { RuntimeSubmissionAnswer } from '../../h5-runtime-judge.schema';
 import type { HomePageData, ModuleId, ModuleLobbyData, PaperInfo, RoomCardViewModel, WrongBookEntry } from '../../h5-question-bank.types';
 import { mockHomePageData, mockModuleLobbyMap } from '../../h5-question-bank.mock';
 import { fullQuestionBankConfig } from '../../h5-question-bank.full';
@@ -369,10 +370,21 @@ function PlayScreen({
 
           {currentQuestion && (
             <>
-              <StemBlocks question={currentQuestion} />
+              <StemBlocks
+                question={currentQuestion}
+                draft={draft}
+                onDraftChange={(answer) =>
+                  onEmit('CHANGE_DRAFT', {
+                    questionId: currentQuestion.questionId,
+                    answer,
+                    meta: { dirty: true, touched: true, source: 'pointer' },
+                  })
+                }
+              />
               <QuestionInteractionPanel
                 widget={currentQuestion.interaction.widget}
                 draft={draft}
+                hotspotCount={currentQuestion.hotspots.length || undefined}
                 onChange={(answer) =>
                   onEmit('CHANGE_DRAFT', {
                     questionId: currentQuestion.questionId,
@@ -561,15 +573,19 @@ function WrongBookScreen({
 
 function StemBlocks({
   question,
+  draft,
+  onDraftChange,
 }: {
   question: NonNullable<NonNullable<ReturnType<typeof useRuntimeMachineDemo>['state']>['currentQuestion']>;
+  draft?: RuntimeSubmissionAnswer;
+  onDraftChange: (answer: RuntimeSubmissionAnswer | undefined) => void;
 }) {
   return (
     <div className="stem-blocks">
       {question.stem.map((item) => {
         const block = item.block;
         if (block.type === 'image') {
-          return <QuestionFigureRenderer key={block.id} question={question} item={item} />;
+          return <QuestionFigureRenderer key={block.id} question={question} item={item} draft={draft} onChange={onDraftChange} />;
         }
 
         if (block.type === 'grid') {

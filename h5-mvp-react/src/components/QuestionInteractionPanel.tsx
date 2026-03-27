@@ -5,6 +5,7 @@ import type { RuntimeSubmissionAnswer } from '../../../h5-runtime-judge.schema';
 interface Props {
   widget: QuestionWidgetSchema;
   draft?: RuntimeSubmissionAnswer;
+  hotspotCount?: number;
   onChange: (answer: RuntimeSubmissionAnswer | undefined) => void;
 }
 
@@ -37,7 +38,7 @@ function toggleChoice(current: string[], optionId: string, multi: boolean): stri
   return [optionId];
 }
 
-export function QuestionInteractionPanel({ widget, draft, onChange }: Props) {
+export function QuestionInteractionPanel({ widget, draft, hotspotCount, onChange }: Props) {
   if (widget.kind === 'text_input') {
     const isTextMode = widget.keyboard === 'text' || widget.answerFormat === 'text';
     return (
@@ -168,30 +169,20 @@ export function QuestionInteractionPanel({ widget, draft, onChange }: Props) {
 
   if (widget.kind === 'click_highlight' || widget.kind === 'click_count') {
     const selected = draft?.kind === 'hotspot_selection' ? draft.hotspotIds : [];
-    const count = widget.maxSelectable ?? Math.max(widget.minSelectable ?? 1, 4);
-    const ids = Array.from({ length: count }, (_, index) => `hs-${index + 1}`);
     return (
       <div className="panel-section">
         <div className="hint-box">{widget.targetHint}</div>
-        <div className="choice-grid">
-          {ids.map((id) => {
-            const active = selected.includes(id);
-            return (
-              <button
-                key={id}
-                type="button"
-                className={`choice-chip ${active ? 'is-active' : ''}`}
-                onClick={() =>
-                  onChange({
-                    kind: 'hotspot_selection',
-                    hotspotIds: active ? selected.filter((item) => item !== id) : [...selected, id],
-                  })
-                }
-              >
-                热区 {id.replace('hs-', '')}
-              </button>
-            );
-          })}
+        <div className="click-answer-card">
+          <div>
+            <div className="field-label">当前已点选</div>
+            <strong>
+              {selected.length}
+              {hotspotCount ? ` / ${hotspotCount}` : ''}
+            </strong>
+          </div>
+          <button className="ghost-button" type="button" onClick={() => onChange(undefined)}>
+            清空当前点选
+          </button>
         </div>
       </div>
     );

@@ -576,3 +576,130 @@ h3 { font-size: 18px; margin-bottom: 12px; }
     align-items: flex-start;
   }
 }
+
+.figure-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.figure-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(55, 119, 255, 0.18);
+  font-weight: 700;
+  color: #23406d;
+}
+
+.figure-layer-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.figure-layer-chip {
+  border: 1px solid #d3ddf4;
+  background: #f4f8ff;
+  color: #36527c;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.figure-layer-chip.is-active {
+  background: linear-gradient(135deg, rgba(55, 119, 255, 0.18), rgba(55, 119, 255, 0.08));
+  border-color: rgba(55, 119, 255, 0.48);
+  color: #133d88;
+}
+
+.figure-canvas-wrap.is-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.figure-hotspot-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.image-modal-figure-wrap {
+  position: relative;
+  max-width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.figure-hotspot-svg.is-modal {
+  pointer-events: none;
+}
+
+.hotspot-group {
+  cursor: pointer;
+}
+
+.hotspot-shape {
+  fill: rgba(255, 255, 255, 0.001);
+  stroke: rgba(55, 119, 255, 0.42);
+  stroke-width: 0.006;
+  vector-effect: non-scaling-stroke;
+  transition: fill 0.16s ease, stroke 0.16s ease, opacity 0.16s ease;
+}
+
+.hotspot-group:hover .hotspot-shape {
+  fill: rgba(55, 119, 255, 0.12);
+  stroke: rgba(55, 119, 255, 0.9);
+}
+
+.hotspot-group.is-active .hotspot-shape {
+  fill: rgba(55, 119, 255, 0.24);
+  stroke: rgba(23, 74, 181, 1);
+}
+
+.hotspot-group.style-dot .hotspot-shape {
+  fill: rgba(55, 119, 255, 0.06);
+}
+
+.hotspot-group.style-square-outline .hotspot-shape {
+  fill: rgba(55, 119, 255, 0.04);
+  stroke-dasharray: 0.01 0.008;
+}
+
+.hotspot-group.style-tile-gap .hotspot-shape {
+  fill: rgba(255, 177, 66, 0.16);
+  stroke: rgba(228, 134, 0, 0.95);
+  stroke-dasharray: 0.014 0.01;
+}
+
+.hotspot-group.style-ghost-cube .hotspot-shape {
+  fill: rgba(20, 164, 77, 0.12);
+  stroke: rgba(20, 164, 77, 0.9);
+  stroke-dasharray: 0.014 0.012;
+}
+
+.hotspot-label {
+  fill: #183567;
+  font-size: 0.042px;
+  font-weight: 800;
+  pointer-events: none;
+  user-select: none;
+}
+
+.click-answer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+  border: 1px solid #d9e4f8;
+  padding: 16px 18px;
+}

@@ -2,6 +2,7 @@ import { fullQuestionBankConfig } from './h5-question-bank.full';
 import { fullQuestionContentBundle, fullQuestionContentRecords } from './h5-question-content.full';
 import { fullAssetRendererBundle } from './h5-asset-renderer.full';
 import { createRuntimeQuestionPageViewModel, createRuntimeQuestionPageViewModels, type RuntimeAdapterDeps } from './h5-runtime-adapter';
+import { applyRuntimeHotspotOverrides } from './h5-runtime-hotspot-overrides';
 import type { ModuleId, QuestionRecord } from './h5-question-bank.types';
 
 export const fullRuntimeAdapterDeps: RuntimeAdapterDeps = {
@@ -13,9 +14,11 @@ export const fullRuntimeAdapterDeps: RuntimeAdapterDeps = {
 export const fullRuntimeQuestionPageMap = Object.fromEntries(
   fullQuestionContentRecords.map((content) => [
     content.meta.questionId,
-    createRuntimeQuestionPageViewModel(content.meta.questionId, fullRuntimeAdapterDeps, {
-      exposeJudgeData: true,
-    }),
+    applyRuntimeHotspotOverrides(
+      createRuntimeQuestionPageViewModel(content.meta.questionId, fullRuntimeAdapterDeps, {
+        exposeJudgeData: true,
+      }),
+    ),
   ]),
 );
 
@@ -55,7 +58,7 @@ export const fullRuntimeQuestionPageExamples = createRuntimeQuestionPageViewMode
     exposeJudgeData: true,
     playMode: 'mixed_challenge',
   },
-);
+).map((item) => applyRuntimeHotspotOverrides(item));
 
 export function getModuleQuestionRecords(moduleId: ModuleId): QuestionRecord[] {
   return fullQuestionBankConfig.questions.filter((item) => item.moduleId === moduleId);
