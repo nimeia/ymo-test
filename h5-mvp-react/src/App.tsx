@@ -22,6 +22,7 @@ import {
 import { QuestionFigureRenderer } from './components/QuestionFigureRenderer';
 import { QuestionInteractionPanel } from './components/QuestionInteractionPanel';
 import { useRuntimeMachineDemo, type SessionPlan } from './hooks/useRuntimeMachineDemo';
+import { seoLinks, toModuleSeoPath, toPaperSeoPath } from './seo/site';
 
 type ScreenRoute =
   | { name: 'home' }
@@ -103,6 +104,36 @@ export default function App() {
       setRoute({ name: 'result' });
     }
   }, [route.name, runtime.state?.phase]);
+
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const descriptions: Record<ScreenRoute['name'], string> = {
+      home: '一年级思维训练首页，可按模块、试卷和专题进入在线练习。',
+      module: '模块大厅，查看当前房间题型、技能点与在线练习入口。',
+      play: '在线做题页，支持判题、结果页和错题重练闭环。',
+      result: '训练结果页，查看本轮完成情况并进入错题本。',
+      wrongbook: '错题本与专题重练入口。',
+    };
+    let nextTitle = '一年级思维训练 H5 | YMO';
+    if (route.name === 'module') {
+      nextTitle = `${mockModuleLobbyMap[route.moduleId].moduleName} | YMO`;
+    } else if (route.name === 'play') {
+      nextTitle = `${plan?.title ?? '在线练习'} | YMO`;
+    } else if (route.name === 'result') {
+      nextTitle = '训练结果 | YMO';
+    } else if (route.name === 'wrongbook') {
+      nextTitle = '错题本 | YMO';
+    }
+    document.title = nextTitle;
+    let descriptionTag = document.querySelector('meta[name="description"]');
+    if (!descriptionTag) {
+      descriptionTag = document.createElement('meta');
+      descriptionTag.setAttribute('name', 'description');
+      document.head.appendChild(descriptionTag);
+    }
+    descriptionTag.setAttribute('content', descriptions[route.name]);
+  }, [plan?.title, route]);
 
   const quickStartSets = useMemo(
     () => [
@@ -209,6 +240,12 @@ export default function App() {
         <button className="ghost-button" type="button" onClick={() => setRoute({ name: 'home' })}>
           首页
         </button>
+        <a className="ghost-button text-link" href="/topics/">
+          专题入口
+        </a>
+        <a className="ghost-button text-link" href="/series/">
+          精修系列
+        </a>
         <button
           className="primary-button"
           type="button"
@@ -234,6 +271,9 @@ export default function App() {
           homeData={mockHomePageData}
           quickStartSets={quickStartSets}
           papers={papers}
+          seoTopicLinks={seoLinks.topics}
+          seoGuideLinks={seoLinks.guides}
+          seoSeriesLinks={seoLinks.series}
           retryQueueCount={retryQueue.length}
           onOpenModule={(moduleId) => setRoute({ name: 'module', moduleId })}
           onOpenQuickStart={(key, title, questionIds) => openPlan({ machineId: key, title, questionIds })}
@@ -255,6 +295,7 @@ export default function App() {
             module={mockModuleLobbyMap[moduleId]}
             roomCard={mockHomePageData.roomCards.find((item) => item.moduleId === moduleId)}
             questionCount={fullRuntimeQuestionIdsByModule[moduleId].length}
+            seoPath={toModuleSeoPath(moduleId)}
             onBack={() => setRoute({ name: 'home' })}
             onStart={() =>
               openPlan({
@@ -327,6 +368,9 @@ function HomeScreen({
   homeData,
   quickStartSets,
   papers,
+  seoTopicLinks,
+  seoGuideLinks,
+  seoSeriesLinks,
   retryQueueCount,
   onOpenModule,
   onOpenQuickStart,
@@ -337,6 +381,9 @@ function HomeScreen({
   homeData: HomePageData;
   quickStartSets: Array<{ key: string; title: string; description: string; questionIds: string[] }>;
   papers: PaperInfo[];
+  seoTopicLinks: typeof seoLinks.topics;
+  seoGuideLinks: typeof seoLinks.guides;
+  seoSeriesLinks: typeof seoLinks.series;
   retryQueueCount: number;
   onOpenModule: (moduleId: ModuleId) => void;
   onOpenQuickStart: (key: string, title: string, questionIds: string[]) => void;
@@ -395,6 +442,34 @@ function HomeScreen({
         </div>
       </section>
 
+
+      <section className="panel-card">
+        <div className="section-head">
+          <h3>专题与指南入口</h3>
+          <span className="tag">首批 SEO 内容层</span>
+        </div>
+        <div className="seo-link-grid">
+          {seoTopicLinks.slice(0, 6).map((item) => (
+            <a key={item.slug} className="seo-link-card" href={`/topics/${item.slug}/`}>
+              <strong>{item.title}</strong>
+              <span>{item.description}</span>
+            </a>
+          ))}
+          {seoSeriesLinks.map((item) => (
+            <a key={item.slug} className="seo-link-card" href={`/series/${item.slug}/`}>
+              <strong>{item.title}</strong>
+              <span>{item.description}</span>
+            </a>
+          ))}
+          {seoGuideLinks.map((item) => (
+            <a key={item.slug} className="seo-link-card" href={`/guides/${item.slug}/`}>
+              <strong>{item.title}</strong>
+              <span>{item.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="panel-card">
         <div className="section-head">
           <h3>按试卷开始</h3>
@@ -410,9 +485,14 @@ function HomeScreen({
                   {paper.grade} · {paper.stage}
                 </p>
               </div>
-              <button className="ghost-button" type="button" onClick={() => onOpenPaper(paper)}>
-                开始 {fullRuntimeQuestionsByPaper[paper.code]?.length ?? 0} 题
-              </button>
+              <div className="room-actions">
+                <button className="ghost-button" type="button" onClick={() => onOpenPaper(paper)}>
+                  开始 {fullRuntimeQuestionsByPaper[paper.code]?.length ?? 0} 题
+                </button>
+                <a className="text-link" href={toPaperSeoPath(paper.code)}>
+                  试卷页
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -435,9 +515,14 @@ function HomeScreen({
                 </span>
               ))}
             </div>
-            <button className="ghost-button" type="button" onClick={() => onOpenModule(room.moduleId)}>
-              进入房间
-            </button>
+            <div className="room-actions">
+              <button className="ghost-button" type="button" onClick={() => onOpenModule(room.moduleId)}>
+                进入房间
+              </button>
+              <a className="text-link" href={toModuleSeoPath(room.moduleId)}>
+                专题页
+              </a>
+            </div>
           </article>
         ))}
       </section>
@@ -449,12 +534,14 @@ function ModuleScreen({
   module,
   roomCard,
   questionCount,
+  seoPath,
   onBack,
   onStart,
 }: {
   module: ModuleLobbyData;
   roomCard?: RoomCardViewModel;
   questionCount: number;
+  seoPath: string;
   onBack: () => void;
   onStart: () => void;
 }) {
@@ -468,6 +555,9 @@ function ModuleScreen({
           <button className="ghost-button" type="button" onClick={onBack}>
             返回首页
           </button>
+          <a className="ghost-button text-link" href={seoPath}>
+            查看专题页
+          </a>
           <button className="primary-button" type="button" onClick={onStart} disabled={!questionCount}>
             {questionCount ? `开始本房间（${questionCount} 题）` : '当前模块待录题'}
           </button>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">第1步：先把整张图看成一圈边框</title>
+  <desc id="desc">先确认上下两排和左右两侧已经围成完整外圈，再去看中间缺口。 补缺题先锁整体轮廓。外圈一旦看成边框，中间空白就不再像一团模糊区域。</desc>
+  <style>
+    .bg { fill: #f8fbff; }
+    .panel { fill: #ffffff; stroke: #dbe6ff; stroke-width: 2; }
+    .title-main { font: 700 28px 'Arial', sans-serif; fill: #18305b; }
+    .title-sub { font: 400 16px 'Arial', sans-serif; fill: #4b628c; }
+    .caption { font: 700 18px 'Arial', sans-serif; fill: #24416f; }
+    .overlay-blue { fill: rgba(82, 120, 202, 0.18); stroke: #5278ca; stroke-width: 2.2; }
+    .overlay-amber { fill: rgba(201, 141, 45, 0.18); stroke: #c98d2d; stroke-width: 2.2; }
+    .overlay-red { fill: rgba(219, 117, 104, 0.18); stroke: #db7568; stroke-width: 2.2; }
+    .overlay-label { font: 700 14px 'Arial', sans-serif; fill: #25416d; }
+    .callout-box { fill: #f2f6ff; stroke: #cddafe; stroke-width: 1.8; }
+    .callout-icon { font: 700 20px 'Arial', sans-serif; fill: #1f355d; }
+    .callout-text { font: 400 16px 'Arial', sans-serif; fill: #2f4568; }
+    .note-dot { fill: #18305b; }
+    .note-dot-text { font: 700 14px 'Arial', sans-serif; fill: #ffffff; }
+    .note-text { font: 400 16px 'Arial', sans-serif; fill: #314764; }
+  </style>
+  <rect width="980" height="420" rx="28" class="bg" />
+  <rect x="40" y="78" width="470" height="272" rx="24" class="panel" />
+  <rect x="534" y="78" width="406" height="272" rx="24" class="panel" />
+  <text x="40" y="28" class="title-main">第1步：先把整张图看成一圈边框</text>
+  <text x="40" y="54" class="title-sub">先确认上下两排和左右两侧已经围成完整外圈，再去看中间缺口。</text>
+  <text x="62" y="108" class="caption">题图区域示意</text>
+  <text x="556" y="108" class="caption">复盘重点</text>
+  <image href="/assets/questions/34Y/34Y-14.png" x="56" y="92" width="430" height="321" preserveAspectRatio="xMidYMid meet" />
+  <g><rect x="132.44444444444446" y="194.37297297297297" width="269.29292929292933" height="29.497297297297298" rx="16" class="overlay-blue" /><text x="281.8585858585859" y="187.43243243243245" text-anchor="middle" class="overlay-label">上边框</text></g><g><rect x="122.88888888888889" y="194.37297297297297" width="60.80808080808081" height="140.54594594594596" rx="16" class="overlay-blue" /><text x="104.64646464646465" y="256.8378378378378" text-anchor="middle" class="overlay-label">左边框</text></g><g><rect x="360.90909090909093" y="194.37297297297297" width="60.80808080808081" height="140.54594594594596" rx="16" class="overlay-blue" /><text x="431.2727272727273" y="256.8378378378378" text-anchor="middle" class="overlay-label">右边框</text></g><g><rect x="132.44444444444446" y="307.15675675675675" width="269.29292929292933" height="32.96756756756757" rx="16" class="overlay-blue" /><text x="281.8585858585859" y="364.41621621621624" text-anchor="middle" class="overlay-label">下边框</text></g>
+  <g><circle cx="622" cy="144" r="14" class="note-dot" /><text x="622" y="149" text-anchor="middle" class="note-dot-text">1</text><text x="648" y="150" class="note-text">先确认这是一圈完整边框，不要把注意力一开始就丢进中间空白。</text></g><g><circle cx="622" cy="198" r="14" class="note-dot" /><text x="622" y="203" text-anchor="middle" class="note-dot-text">2</text><text x="648" y="204" class="note-text">边框感一旦建立，中间就会自然被看成“内部缺口”。</text></g>
+  <rect x="40" y="366" width="900" height="40" rx="18" class="callout-box" />
+  <text x="60" y="392" class="callout-icon">!</text>
+  <text x="92" y="392" class="callout-text">补缺题先锁整体轮廓。外圈一旦看成边框，中间空白就不再像一团模糊区域。</text>
+</svg>

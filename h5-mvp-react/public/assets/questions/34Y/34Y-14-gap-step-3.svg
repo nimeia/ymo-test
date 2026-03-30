@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">第3步：最后只回查左右转角和中段连接处</title>
+  <desc id="desc">真正容易漏的通常是左右向内转的地方，以及和中段接起来的位置。 复盘时缩小范围，只盯高风险转角和连接处，会比整题重数一遍更有效。</desc>
+  <style>
+    .bg { fill: #f8fbff; }
+    .panel { fill: #ffffff; stroke: #dbe6ff; stroke-width: 2; }
+    .title-main { font: 700 28px 'Arial', sans-serif; fill: #18305b; }
+    .title-sub { font: 400 16px 'Arial', sans-serif; fill: #4b628c; }
+    .caption { font: 700 18px 'Arial', sans-serif; fill: #24416f; }
+    .overlay-blue { fill: rgba(82, 120, 202, 0.18); stroke: #5278ca; stroke-width: 2.2; }
+    .overlay-amber { fill: rgba(201, 141, 45, 0.18); stroke: #c98d2d; stroke-width: 2.2; }
+    .overlay-red { fill: rgba(219, 117, 104, 0.18); stroke: #db7568; stroke-width: 2.2; }
+    .overlay-label { font: 700 14px 'Arial', sans-serif; fill: #25416d; }
+    .callout-box { fill: #f2f6ff; stroke: #cddafe; stroke-width: 1.8; }
+    .callout-icon { font: 700 20px 'Arial', sans-serif; fill: #1f355d; }
+    .callout-text { font: 400 16px 'Arial', sans-serif; fill: #2f4568; }
+    .note-dot { fill: #18305b; }
+    .note-dot-text { font: 700 14px 'Arial', sans-serif; fill: #ffffff; }
+    .note-text { font: 400 16px 'Arial', sans-serif; fill: #314764; }
+  </style>
+  <rect width="980" height="420" rx="28" class="bg" />
+  <rect x="40" y="78" width="470" height="272" rx="24" class="panel" />
+  <rect x="534" y="78" width="406" height="272" rx="24" class="panel" />
+  <text x="40" y="28" class="title-main">第3步：最后只回查左右转角和中段连接处</text>
+  <text x="40" y="54" class="title-sub">真正容易漏的通常是左右向内转的地方，以及和中段接起来的位置。</text>
+  <text x="62" y="108" class="caption">题图区域示意</text>
+  <text x="556" y="108" class="caption">复盘重点</text>
+  <image href="/assets/questions/34Y/34Y-14.png" x="56" y="92" width="430" height="321" preserveAspectRatio="xMidYMid meet" />
+  <g><rect x="170.66666666666669" y="241.22162162162164" width="38.22222222222222" height="53.78918918918919" rx="16" class="overlay-red" /><text x="139.3939393939394" y="268.9837837837838" text-anchor="middle" class="overlay-label">左转角</text></g><g><rect x="216.70707070707073" y="255.10270270270271" width="104.24242424242425" height="24.291891891891893" rx="16" class="overlay-red" /><text x="268.82828282828285" y="249.8972972972973" text-anchor="middle" class="overlay-label">中段连接</text></g><g><rect x="335.7171717171717" y="241.22162162162164" width="38.22222222222222" height="53.78918918918919" rx="16" class="overlay-red" /><text x="401.73737373737373" y="268.9837837837838" text-anchor="middle" class="overlay-label">右转角</text></g>
+  <g><circle cx="622" cy="144" r="14" class="note-dot" /><text x="622" y="149" text-anchor="middle" class="note-dot-text">1</text><text x="648" y="150" class="note-text">真正容易漏的不是大块中间，而是两侧转角。</text></g><g><circle cx="622" cy="198" r="14" class="note-dot" /><text x="622" y="203" text-anchor="middle" class="note-dot-text">2</text><text x="648" y="204" class="note-text">最后一轮复核只看这些高风险位置，效率更高。</text></g>
+  <rect x="40" y="366" width="900" height="40" rx="18" class="callout-box" />
+  <text x="60" y="392" class="callout-icon">!</text>
+  <text x="92" y="392" class="callout-text">复盘时缩小范围，只盯高风险转角和连接处，会比整题重数一遍更有效。</text>
+</svg>

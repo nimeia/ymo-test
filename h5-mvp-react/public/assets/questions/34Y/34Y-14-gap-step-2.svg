@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">第2步：把中间空白拆成几段再复核</title>
+  <desc id="desc">不要整块空白一起数，可以先拆成上沿、中段、下沿三段。 大空白最怕一眼估数。拆成几段后，复核路径会稳定很多。</desc>
+  <style>
+    .bg { fill: #f8fbff; }
+    .panel { fill: #ffffff; stroke: #dbe6ff; stroke-width: 2; }
+    .title-main { font: 700 28px 'Arial', sans-serif; fill: #18305b; }
+    .title-sub { font: 400 16px 'Arial', sans-serif; fill: #4b628c; }
+    .caption { font: 700 18px 'Arial', sans-serif; fill: #24416f; }
+    .overlay-blue { fill: rgba(82, 120, 202, 0.18); stroke: #5278ca; stroke-width: 2.2; }
+    .overlay-amber { fill: rgba(201, 141, 45, 0.18); stroke: #c98d2d; stroke-width: 2.2; }
+    .overlay-red { fill: rgba(219, 117, 104, 0.18); stroke: #db7568; stroke-width: 2.2; }
+    .overlay-label { font: 700 14px 'Arial', sans-serif; fill: #25416d; }
+    .callout-box { fill: #f2f6ff; stroke: #cddafe; stroke-width: 1.8; }
+    .callout-icon { font: 700 20px 'Arial', sans-serif; fill: #1f355d; }
+    .callout-text { font: 400 16px 'Arial', sans-serif; fill: #2f4568; }
+    .note-dot { fill: #18305b; }
+    .note-dot-text { font: 700 14px 'Arial', sans-serif; fill: #ffffff; }
+    .note-text { font: 400 16px 'Arial', sans-serif; fill: #314764; }
+  </style>
+  <rect width="980" height="420" rx="28" class="bg" />
+  <rect x="40" y="78" width="470" height="272" rx="24" class="panel" />
+  <rect x="534" y="78" width="406" height="272" rx="24" class="panel" />
+  <text x="40" y="28" class="title-main">第2步：把中间空白拆成几段再复核</text>
+  <text x="40" y="54" class="title-sub">不要整块空白一起数，可以先拆成上沿、中段、下沿三段。</text>
+  <text x="62" y="108" class="caption">题图区域示意</text>
+  <text x="556" y="108" class="caption">复盘重点</text>
+  <image href="/assets/questions/34Y/34Y-14.png" x="56" y="92" width="430" height="321" preserveAspectRatio="xMidYMid meet" />
+  <g><rect x="188.04040404040404" y="222.13513513513513" width="159.83838383838383" height="20.821621621621624" rx="16" class="overlay-amber" /><text x="269.69696969696975" y="216.92972972972973" text-anchor="middle" class="overlay-label">上沿缺口</text></g><g><rect x="170.66666666666669" y="244.69189189189188" width="196.32323232323233" height="39.90810810810811" rx="16" class="overlay-amber" /><text x="269.69696969696975" y="267.24864864864867" text-anchor="middle" class="overlay-label">中段主缺口</text></g><g><rect x="188.04040404040404" y="286.33513513513515" width="159.83838383838383" height="20.821621621621624" rx="16" class="overlay-amber" /><text x="269.69696969696975" y="319.30270270270273" text-anchor="middle" class="overlay-label">下沿缺口</text></g>
+  <g><circle cx="622" cy="144" r="14" class="note-dot" /><text x="622" y="149" text-anchor="middle" class="note-dot-text">1</text><text x="648" y="150" class="note-text">先拆区域，再看每一段里实际缺了哪些六边形。</text></g><g><circle cx="622" cy="198" r="14" class="note-dot" /><text x="622" y="203" text-anchor="middle" class="note-dot-text">2</text><text x="648" y="204" class="note-text">中间不是一整块同形空白，按带状区域处理更稳。</text></g>
+  <rect x="40" y="366" width="900" height="40" rx="18" class="callout-box" />
+  <text x="60" y="392" class="callout-icon">!</text>
+  <text x="92" y="392" class="callout-text">大空白最怕一眼估数。拆成几段后，复核路径会稳定很多。</text>
+</svg>

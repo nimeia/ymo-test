@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">第1步：先只数最短的一格线段</title>
+  <desc id="desc">这三张图是方法示意图，不是原题逐线描红。第一轮只把最短的基础线段数出来。 数线段题的起点不是总数，而是最短的一格小段。基础段一旦数清，后面更长的线段才不容易漏。</desc>
+  <style>
+    .bg { fill: #f8fbff; }
+    .panel { fill: #ffffff; stroke: #dbe6ff; stroke-width: 2; }
+    .title-main { font: 700 28px 'Arial', sans-serif; fill: #18305b; }
+    .title-sub { font: 400 16px 'Arial', sans-serif; fill: #4b628c; }
+    .caption { font: 700 18px 'Arial', sans-serif; fill: #24416f; }
+    .seg-base { stroke: #d5ddf0; stroke-width: 6; stroke-linecap: round; }
+    .seg-unit { stroke: #4f7fd9; stroke-width: 8; stroke-linecap: round; }
+    .seg-horizontal { stroke: #4f7fd9; stroke-width: 8; stroke-linecap: round; }
+    .seg-vertical { stroke: #d39a45; stroke-width: 8; stroke-linecap: round; }
+    .seg-medium { stroke: #d39a45; stroke-width: 10; stroke-linecap: round; }
+    .seg-long { stroke: #d96c63; stroke-width: 10; stroke-linecap: round; }
+    .strong { opacity: 0.95; }
+    .soft { opacity: 0.45; }
+    .note-dot { fill: #18305b; }
+    .note-dot-text { font: 700 14px 'Arial', sans-serif; fill: #ffffff; }
+    .note-text { font: 400 16px 'Arial', sans-serif; fill: #314764; }
+    .callout-box { fill: #f2f6ff; stroke: #cddafe; stroke-width: 1.8; }
+    .callout-icon { font: 700 20px 'Arial', sans-serif; fill: #1f355d; }
+    .callout-text { font: 400 16px 'Arial', sans-serif; fill: #2f4568; }
+    .badge.blue { fill: rgba(79, 127, 217, 0.14); stroke: #4f7fd9; stroke-width: 1.8; }
+    .badge.amber { fill: rgba(211, 154, 69, 0.16); stroke: #d39a45; stroke-width: 1.8; }
+    .badge.red { fill: rgba(217, 108, 99, 0.14); stroke: #d96c63; stroke-width: 1.8; }
+    .badge-text { font: 700 16px 'Arial', sans-serif; fill: #28446d; }
+    .summary-card { fill: #fffaf3; stroke: #f0d5aa; stroke-width: 1.8; }
+    .summary-title { font: 700 17px 'Arial', sans-serif; fill: #6a471a; }
+    .summary-text { font: 400 15px 'Arial', sans-serif; fill: #704f25; }
+    .mini-caption { font: 400 15px 'Arial', sans-serif; fill: #58709b; }
+  </style>
+  <rect width="980" height="420" rx="28" class="bg" />
+  <rect x="40" y="78" width="470" height="272" rx="24" class="panel" />
+  <rect x="534" y="78" width="406" height="272" rx="24" class="panel" />
+  <text x="40" y="28" class="title-main">第1步：先只数最短的一格线段</text>
+  <text x="40" y="54" class="title-sub">这三张图是方法示意图，不是原题逐线描红。第一轮只把最短的基础线段数出来。</text>
+  <text x="62" y="108" class="caption">方法示意图</text>
+  <text x="556" y="108" class="caption">复盘重点</text>
+  <line x1="126" y1="122" x2="198" y2="122" class="seg-base" /><line x1="198" y1="122" x2="270" y2="122" class="seg-base" /><line x1="270" y1="122" x2="342" y2="122" class="seg-base" /><line x1="342" y1="122" x2="414" y2="122" class="seg-base" /><line x1="126" y1="314" x2="198" y2="314" class="seg-base" /><line x1="198" y1="314" x2="270" y2="314" class="seg-base" /><line x1="270" y1="314" x2="342" y2="314" class="seg-base" /><line x1="342" y1="314" x2="414" y2="314" class="seg-base" /><line x1="126" y1="122" x2="126" y2="170" class="seg-base" /><line x1="126" y1="170" x2="126" y2="218" class="seg-base" /><line x1="126" y1="218" x2="126" y2="266" class="seg-base" /><line x1="126" y1="266" x2="126" y2="314" class="seg-base" /><line x1="414" y1="122" x2="414" y2="170" class="seg-base" /><line x1="414" y1="170" x2="414" y2="218" class="seg-base" /><line x1="414" y1="218" x2="414" y2="266" class="seg-base" /><line x1="414" y1="266" x2="414" y2="314" class="seg-base" /><line x1="198" y1="170" x2="270" y2="170" class="seg-base" /><line x1="270" y1="170" x2="342" y2="170" class="seg-base" /><line x1="198" y1="266" x2="270" y2="266" class="seg-base" /><line x1="270" y1="266" x2="342" y2="266" class="seg-base" /><line x1="198" y1="170" x2="198" y2="218" class="seg-base" /><line x1="198" y1="218" x2="198" y2="266" class="seg-base" /><line x1="342" y1="170" x2="342" y2="218" class="seg-base" /><line x1="342" y1="218" x2="342" y2="266" class="seg-base" /><line x1="126" y1="218" x2="198" y2="218" class="seg-base" /><line x1="198" y1="218" x2="270" y2="218" class="seg-base" /><line x1="270" y1="218" x2="342" y2="218" class="seg-base" /><line x1="342" y1="218" x2="414" y2="218" class="seg-base" /><line x1="270" y1="122" x2="270" y2="170" class="seg-base" /><line x1="270" y1="170" x2="270" y2="218" class="seg-base" /><line x1="270" y1="218" x2="270" y2="266" class="seg-base" /><line x1="270" y1="266" x2="270" y2="314" class="seg-base" />
+  <line x1="126" y1="122" x2="198" y2="122" class="seg-unit" /><line x1="198" y1="122" x2="270" y2="122" class="seg-unit" /><line x1="270" y1="122" x2="342" y2="122" class="seg-unit" /><line x1="342" y1="122" x2="414" y2="122" class="seg-unit" /><line x1="126" y1="314" x2="198" y2="314" class="seg-unit" /><line x1="198" y1="314" x2="270" y2="314" class="seg-unit" /><line x1="270" y1="314" x2="342" y2="314" class="seg-unit" /><line x1="342" y1="314" x2="414" y2="314" class="seg-unit" /><line x1="126" y1="122" x2="126" y2="170" class="seg-unit" /><line x1="126" y1="170" x2="126" y2="218" class="seg-unit" /><line x1="126" y1="218" x2="126" y2="266" class="seg-unit" /><line x1="126" y1="266" x2="126" y2="314" class="seg-unit" /><line x1="414" y1="122" x2="414" y2="170" class="seg-unit" /><line x1="414" y1="170" x2="414" y2="218" class="seg-unit" /><line x1="414" y1="218" x2="414" y2="266" class="seg-unit" /><line x1="414" y1="266" x2="414" y2="314" class="seg-unit" /><line x1="198" y1="170" x2="270" y2="170" class="seg-unit" /><line x1="270" y1="170" x2="342" y2="170" class="seg-unit" /><line x1="198" y1="266" x2="270" y2="266" class="seg-unit" /><line x1="270" y1="266" x2="342" y2="266" class="seg-unit" /><line x1="198" y1="170" x2="198" y2="218" class="seg-unit" /><line x1="198" y1="218" x2="198" y2="266" class="seg-unit" /><line x1="342" y1="170" x2="342" y2="218" class="seg-unit" /><line x1="342" y1="218" x2="342" y2="266" class="seg-unit" /><line x1="126" y1="218" x2="198" y2="218" class="seg-unit" /><line x1="198" y1="218" x2="270" y2="218" class="seg-unit" /><line x1="270" y1="218" x2="342" y2="218" class="seg-unit" /><line x1="342" y1="218" x2="414" y2="218" class="seg-unit" /><line x1="270" y1="122" x2="270" y2="170" class="seg-unit" /><line x1="270" y1="170" x2="270" y2="218" class="seg-unit" /><line x1="270" y1="218" x2="270" y2="266" class="seg-unit" /><line x1="270" y1="266" x2="270" y2="314" class="seg-unit" />
+  
+      <text x="116" y="346" class="mini-caption">方法示意：先把最短基础段全数出来</text>
+      <rect x="560" y="126" width="150" height="44" rx="18" class="badge blue" />
+      <text x="635" y="154" text-anchor="middle" class="badge-text">第一轮：只看 1 格段</text>
+  <g><circle cx="574" cy="170" r="14" class="note-dot" /><text x="574" y="175" text-anchor="middle" class="note-dot-text">1</text><text x="600" y="176" class="note-text">第一轮只盯一格长的基础线段，不急着把两段或三段合起来。</text></g><g><circle cx="574" cy="232" r="14" class="note-dot" /><text x="574" y="237" text-anchor="middle" class="note-dot-text">2</text><text x="600" y="238" class="note-text">先把基础段数清，后面所有更长的线段都只是“在它上面再合并”。</text></g>
+  <rect x="40" y="366" width="900" height="40" rx="18" class="callout-box" />
+  <text x="60" y="392" class="callout-icon">!</text>
+  <text x="92" y="392" class="callout-text">数线段题的起点不是总数，而是最短的一格小段。基础段一旦数清，后面更长的线段才不容易漏。</text>
+</svg>

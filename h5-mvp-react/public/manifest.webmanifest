@@ -1,0 +1,9 @@
+{
+  "name": "YMO 一年级思维训练",
+  "short_name": "YMO H5",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fe",
+  "theme_color": "#3777ff",
+  "lang": "zh-CN"
+}

@@ -19,6 +19,12 @@
 - 做题页
 - 结算页
 - 错题本页
+- SEO 内容页（静态生成）
+  - 模块页
+  - 试卷页
+  - 题型专题页
+  - 训练指南页
+  - 题目说明页
 
 ## 已接起来的运行能力
 
@@ -31,20 +37,7 @@
 - 完成后结算
 - 本地快照恢复（localStorage）
 - Demo 题组切换
-
-## 说明
-
-当前 Demo 使用的是已经结构化的 7 道样题：
-
-- 36Y-1
-- 36Y-2
-- 36Y-10
-- 36Y-7
-- 36Y-19
-- 34W-20
-- 34Y-18
-
-模块 C / D 在这套样题里还没有正式内容录入，所以页面会显示“待录题”提示。这是 UI 骨架层的真实状态，不是 bug。
+- Preview / Production 差异化 SEO 输出
 
 ## 目录
 
@@ -52,6 +45,9 @@
 - `src/hooks/useRuntimeMachineDemo.ts`：状态机 + 本地持久化封装
 - `src/components/QuestionInteractionPanel.tsx`：题目交互区
 - `src/styles.css`：基础样式
+- `src/seo/catalog.json`：专题、指南与精选题目页配置
+- `scripts/build-seo-assets.mjs`：SEO 静态页、`robots.txt`、`sitemap.xml` 生成脚本
+- `scripts/check-seo-output.mjs`：构建产物校验脚本
 
 ## 启动
 
@@ -60,13 +56,29 @@ npm install
 npm run dev
 ```
 
-## 下一步建议
+## 构建
 
-下一步优先做这三件事：
+```bash
+npm run build
+```
 
-1. 批量补齐 80 道题的正式 `QuestionContentRecord`
-2. 把图片 / sprite / 3D 模型换成真实资源
-3. 接真实后端接口，把 scheduler + remote sync 跑通
+构建时会自动执行：
+
+1. 生成 SEO 静态页面与 `robots.txt` / `sitemap.xml`
+2. 构建 React 应用
+3. 校验关键 SEO 产物是否进入 `dist/`
+
+## SEO 环境变量
+
+可选环境变量：
+
+- `SITE_ORIGIN` / `VITE_SITE_ORIGIN`：正式站点域名，例如 `https://example.com`
+- `SEO_ENV` / `VITE_SEO_ENV`：`production` 或 `preview`
+
+行为约定：
+
+- `production`：页面允许索引，`robots.txt` 允许抓取，输出 `sitemap.xml`
+- `preview`：页面统一 `noindex,nofollow`，`robots.txt` 禁止抓取
 
 ## GitHub Actions 发布到 Cloudflare Pages
 
@@ -85,26 +97,17 @@ npm run dev
 **Repository Variables**
 
 - `CLOUDFLARE_PAGES_PROJECT_NAME`：Cloudflare Pages 项目名
+- `SITE_ORIGIN`：正式站点域名，未配置时会回退到 `https://<project>.pages.dev`
 
 **Repository Secrets**
 
 - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 账户 ID
 - `CLOUDFLARE_API_TOKEN`：Cloudflare API Token
 
-### API Token 权限
-
-建议按 Cloudflare Pages 官方文档创建自定义 Token，权限至少包含：
-
-- `Account / Cloudflare Pages / Edit`
-
 ### 工作流做了什么
 
 1. 进入 `h5-mvp-react`
 2. 执行 `npm install`
-3. 执行 `npm run build`
-4. 将 `dist/` 目录通过 `cloudflare/wrangler-action@v3` 发布到 Cloudflare Pages
-
-### 说明
-
-当前仓库的前端项目位于子目录 `h5-mvp-react`，因此工作流已经固定从该目录构建，并发布其产物目录 `dist/`。
-
+3. 注入 `production` / `preview` SEO 环境变量
+4. 执行 `npm run build`
+5. 将 `dist/` 目录通过 `cloudflare/wrangler-action@v3` 发布到 Cloudflare Pages

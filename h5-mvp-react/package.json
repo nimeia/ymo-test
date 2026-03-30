@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:seo": "node ./scripts/generate-fold-diagrams.mjs && node ./scripts/build-seo-assets.mjs",
+    "build:check": "node ./scripts/check-seo-output.mjs",
+    "build": "npm run build:seo && node ./node_modules/typescript/bin/tsc -b && node ./node_modules/vite/bin/vite.js build && npm run build:check",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">第2步：有上层就先补支撑列</title>
+  <desc id="desc">上面的方块不能悬空；看见更高一层时，要先往下补出必需的支撑块。 先补“必须存在”的支撑块，再讨论真正看不见的内部块，顺序会稳很多。</desc>
+  <style>
+    .bg { fill: #f8fbff; }
+    .panel { fill: #ffffff; stroke: #dbe6ff; stroke-width: 2; }
+    .title-main { font: 700 28px 'Arial', sans-serif; fill: #18305b; }
+    .title-sub { font: 400 16px 'Arial', sans-serif; fill: #4b628c; }
+    .caption { font: 700 18px 'Arial', sans-serif; fill: #24416f; }
+    .front-visible { fill: #eef4ff; stroke: #5278ca; stroke-width: 2.2; }
+    .top-visible { fill: #fcfdff; stroke: #5278ca; stroke-width: 2.2; }
+    .side-visible { fill: #f4f7ff; stroke: #5278ca; stroke-width: 2.2; }
+    .front-support { fill: #fff3db; stroke: #c98d2d; stroke-width: 2.2; }
+    .top-support { fill: #fff9ef; stroke: #c98d2d; stroke-width: 2.2; }
+    .side-support { fill: #fff6e7; stroke: #c98d2d; stroke-width: 2.2; }
+    .front-hidden { fill: #fff0ef; stroke: #db7568; stroke-width: 2.2; stroke-dasharray: 6 5; }
+    .top-hidden { fill: #fff7f6; stroke: #db7568; stroke-width: 2.2; stroke-dasharray: 6 5; }
+    .side-hidden { fill: #fff4f2; stroke: #db7568; stroke-width: 2.2; stroke-dasharray: 6 5; }
+    .legend-visible { fill: #eef4ff; stroke: #5278ca; stroke-width: 2; }
+    .legend-support { fill: #fff3db; stroke: #c98d2d; stroke-width: 2; }
+    .legend-hidden { fill: #fff0ef; stroke: #db7568; stroke-width: 2; }
+    .legend-muted { fill: #f3f6fb; stroke: #c4d0e5; stroke-width: 2; }
+    .legend-text { font: 400 16px 'Arial', sans-serif; fill: #314764; }
+    .callout-box { fill: #f2f6ff; stroke: #cddafe; stroke-width: 1.8; }
+    .callout-icon { font: 700 20px 'Arial', sans-serif; fill: #1f355d; }
+    .callout-text { font: 400 16px 'Arial', sans-serif; fill: #2f4568; }
+    .callout-chip { fill: #ffffff; stroke: #dbe6ff; stroke-width: 1.8; }
+    .callout-chip-text { font: 700 14px 'Arial', sans-serif; fill: #c55d50; }
+  </style>
+  <rect width="980" height="420" rx="28" class="bg" />
+  <rect x="40" y="78" width="560" height="256" rx="24" class="panel" />
+  <rect x="624" y="78" width="316" height="256" rx="24" class="panel" />
+  <text x="40" y="28" class="title-main">第2步：有上层就先补支撑列</text>
+  <text x="40" y="54" class="title-sub">上面的方块不能悬空；看见更高一层时，要先往下补出必需的支撑块。</text>
+  <text x="62" y="108" class="caption">空间结构示意</text>
+  <text x="646" y="108" class="caption">复盘重点</text>
+  <g><polygon points="210,288 270,254 360,254 300,288" class="top-visible" /><polygon points="300,288 360,254 360,330 300,364" class="side-visible" /><polygon points="210,288 300,288 300,364 210,364" class="front-visible" /></g><g><polygon points="300,288 360,254 450,254 390,288" class="top-visible" /><polygon points="390,288 450,254 450,330 390,364" class="side-visible" /><polygon points="300,288 390,288 390,364 300,364" class="front-visible" /></g><g><polygon points="390,288 450,254 540,254 480,288" class="top-visible" /><polygon points="480,288 540,254 540,330 480,364" class="side-visible" /><polygon points="390,288 480,288 480,364 390,364" class="front-visible" /></g><g><polygon points="360,254 420,220 510,220 450,254" class="top-support" /><polygon points="450,254 510,220 510,296 450,330" class="side-support" /><polygon points="360,254 450,254 450,330 360,330" class="front-support" /></g><g><polygon points="330,220 390,186 480,186 420,220" class="top-support" /><polygon points="420,220 480,186 480,262 420,296" class="side-support" /><polygon points="330,220 420,220 420,296 330,296" class="front-support" /></g><g><polygon points="360,178 420,144 510,144 450,178" class="top-visible" /><polygon points="450,178 510,144 510,220 450,254" class="side-visible" /><polygon points="360,178 450,178 450,254 360,254" class="front-visible" /></g><g><polygon points="330,144 390,110 480,110 420,144" class="top-support" /><polygon points="420,144 480,110 480,186 420,220" class="side-support" /><polygon points="330,144 420,144 420,220 330,220" class="front-support" /></g><g><polygon points="330,68 390,34 480,34 420,68" class="top-visible" /><polygon points="420,68 480,34 480,110 420,144" class="side-visible" /><polygon points="330,68 420,68 420,144 330,144" class="front-visible" /></g>
+  <g transform="translate(650 112)"><rect width="22" height="22" rx="7" class="legend-visible" /><text x="34" y="16" class="legend-text">看得见的方块</text></g><g transform="translate(650 146)"><rect width="22" height="22" rx="7" class="legend-support" /><text x="34" y="16" class="legend-text">必须补出的支撑块</text></g>
+  
+  <rect x="40" y="352" width="900" height="48" rx="18" class="callout-box" />
+  <text x="60" y="382" class="callout-icon">!</text>
+  <text x="92" y="382" class="callout-text">先补“必须存在”的支撑块，再讨论真正看不见的内部块，顺序会稳很多。</text>
+</svg>

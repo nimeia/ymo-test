@@ -1005,3 +1005,58 @@ h3 { font-size: 18px; margin-bottom: 12px; }
   border-color: rgba(90, 220, 160, 0.45);
   background: rgba(90, 220, 160, 0.12);
 }
+
+.seo-link-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.seo-link-card,
+.text-link {
+  text-decoration: none;
+}
+
+.seo-link-card {
+  border-radius: 18px;
+  border: 1px solid #dfe7fb;
+  background: #f8fbff;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  color: #23355d;
+}
+
+.seo-link-card strong {
+  font-size: 16px;
+}
+
+.seo-link-card span {
+  color: #5d6a85;
+  line-height: 1.6;
+}
+
+.room-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  padding: 10px 16px;
+  border: 1px solid #cad8fd;
+  background: #fff;
+  color: #23355d;
+  transition: 0.18s ease;
+}
+
+.text-link:hover,
+.seo-link-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(56, 101, 255, 0.12);
+}

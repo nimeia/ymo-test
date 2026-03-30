@@ -51,6 +51,25 @@ jobs:
             exit 1
           fi
 
+      - name: Resolve SEO build variables
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            seo_env="preview"
+          else
+            seo_env="production"
+          fi
+
+          if [ -n "${{ vars.SITE_ORIGIN }}" ]; then
+            site_origin="${{ vars.SITE_ORIGIN }}"
+          else
+            site_origin="https://${CLOUDFLARE_PAGES_PROJECT_NAME}.pages.dev"
+          fi
+
+          echo "SEO_ENV=${seo_env}" >> "$GITHUB_ENV"
+          echo "VITE_SEO_ENV=${seo_env}" >> "$GITHUB_ENV"
+          echo "SITE_ORIGIN=${site_origin}" >> "$GITHUB_ENV"
+          echo "VITE_SITE_ORIGIN=${site_origin}" >> "$GITHUB_ENV"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

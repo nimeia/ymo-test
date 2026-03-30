@@ -1535,7 +1535,7 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
+          "text": "这题的正式答案仍建议结合原图资源做一轮终审。当前记录已完成题面结构化，SEO 解析页已补“外轮廓→支撑列→隐藏区”的可视化拆解，页面文案继续统一收口为“待终审”。",
           "tone": "warning"
         }
       ]
@@ -1549,13 +1549,13 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "待终审"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "题面和资源挂接已完成，这题的解题方法已经固定。SEO 解析页已补出可复用的空间题可视化模板：先看外轮廓，再补支撑列，最后只盯隐藏区；最终数量仍建议结合原图资源完成最后一轮终审。",
       "steps": [
         {
           "id": "s1",
@@ -4923,8 +4923,8 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
-          "tone": "warning"
+          "text": "这题已完成终审，正式答案可直接核对：5个图中共有3个是正方体展开图。",
+          "tone": "success"
         }
       ]
     },
@@ -4937,13 +4937,13 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "3"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "这题已完成终审，5个图中共有3个是正方体展开图；判断时可先找中心格，再排查重叠与对面冲突。",
       "steps": [
         {
           "id": "s1",
@@ -5021,7 +5021,7 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
+          "text": "这题的方法讲解与可视化拆解已完成，最终数量仍建议结合更清晰的原图资源做最后一轮终审。当前答案先标记为“待终审”。",
           "tone": "warning"
         }
       ]
@@ -5035,13 +5035,13 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "待终审"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "题面与可视化拆解已完成，这题的最终数量建议在更清晰原图到位后再做一次终审。",
       "steps": [
         {
           "id": "s1",
@@ -5211,7 +5211,7 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
+          "text": "这题的方法讲解与可视化拆解已完成，最终数量仍建议结合更清晰的原图资源做最后一轮终审。当前答案先标记为“待终审”。",
           "tone": "warning"
         }
       ]
@@ -5225,13 +5225,13 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "待终审"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "题面与可视化拆解已完成，这题的最终数量建议在更清晰原图到位后再做一次终审。",
       "steps": [
         {
           "id": "s1",
@@ -5323,37 +5323,37 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "这类题先按层、按大小或按区域分类统计，避免漏数。",
+      "summary": "这题属于复合方框图数线段。按“先最短、再分方向、最后按长度复核”的顺序统计，最终总数为 44。",
       "steps": [
         {
           "id": "s1",
           "kind": "observation",
-          "title": "先识别题型",
-          "text": "这题属于「数线段」，先用这一类题的固定思路观察条件。"
+          "title": "先数最短线段",
+          "text": "第一轮先只找 1 格长的最短基础线段，不急着合并更长的线段。先把基础段数清，后面的统计才有依托。"
         },
         {
           "id": "s2",
           "kind": "rule",
-          "title": "抓住核心关系",
-          "text": "把题目中最关键的数量关系、规律关系或空间关系先找出来。"
+          "title": "把横线和竖线拆开",
+          "text": "第二轮固定一个方向来数，先横后竖或先竖后横都可以。方向一旦混着数，同一条线段最容易重复进入统计。"
         },
         {
           "id": "s3",
           "kind": "verification",
-          "title": "验证答案",
-          "text": "得到结果后，再回到原题核对一次，确认没有漏条件或看错图。"
+          "title": "按长度复核并收口",
+          "text": "最后在同一方向里再检查 1 格段、2 格段和更长线段，把各层数量合并后，终审总数为 44。"
         }
       ],
       "wrongReasons": [
         {
-          "code": "skip_observation",
-          "title": "上来就算",
-          "text": "先看题型、再下手，通常会更快也更稳。"
+          "code": "only_short_segments",
+          "title": "只数了最短段",
+          "text": "最短段只是基础，后面还要补 2 格段、3 格段和整条长段。"
         },
         {
-          "code": "miss_condition",
-          "title": "漏了条件",
-          "text": "图形题、规律题和等量题都要把条件完整读一遍。"
+          "code": "mix_directions",
+          "title": "横竖混着数",
+          "text": "横线和竖线最好分开统计；混在一起时，同一条线段最容易被重复或漏掉。"
         }
       ]
     },
@@ -5769,7 +5769,7 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
+          "text": "这题的正式答案仍建议结合原图资源做一轮终审。当前记录已完成题面结构化，SEO 解析页已补“外轮廓→支撑列→隐藏区”的可视化拆解，页面文案继续统一收口为“待终审”。",
           "tone": "warning"
         }
       ]
@@ -5783,13 +5783,13 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "待终审"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "题面和资源挂接已完成，这题的解题方法已经固定。SEO 解析页已补出可复用的空间题可视化模板：先看外轮廓，再补支撑列，最后只盯隐藏区；最终数量仍建议结合原图资源完成最后一轮终审。",
       "steps": [
         {
           "id": "s1",
@@ -5962,7 +5962,7 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
         {
           "id": "b3",
           "type": "callout",
-          "text": "这题的正式答案仍建议结合原图资源做一轮终审校验。当前记录已完成题面结构化，答案先标记为“待校验”。",
+          "text": "这题已完成终审，正式答案可直接核对：5个图中共有3个是正方体展开图。",
           "tone": "warning"
         }
       ]
@@ -5976,31 +5976,43 @@ export const fullQuestionContentRecords: QuestionContentRecord[] = [
     "answer": {
       "kind": "free_text",
       "acceptedTexts": [
-        "待校验"
+        "3"
       ],
       "ignoreCase": true,
       "trimWhitespace": true
     },
     "explanation": {
-      "summary": "题面和资源挂接已完成，这题的最终答案建议在图像切图完成后再做一次校验。",
+      "summary": "这题已完成终审，5个图中共有3个是正方体展开图。复盘时不要只记答案，要按“图1到图5逐个判断”的顺序，明确哪些保留、哪些排除；SEO 解析页里还补了折叠方向示意图，方便直观看“为什么撞面”。",
       "steps": [
         {
           "id": "s1",
           "kind": "observation",
-          "title": "先识别题型",
-          "text": "这题属于「展开图判断」，先用这一类题的固定思路观察条件。"
+          "title": "图1保留，先建立正确样本",
+          "text": "图1可以折成正方体。先把中间那格看成核心面，再看左右和下方的面依次翻起，6个面能落到不同方向，不会重叠。"
         },
         {
           "id": "s2",
           "kind": "rule",
-          "title": "抓住核心关系",
-          "text": "把题目中最关键的数量关系、规律关系或空间关系先找出来。"
+          "title": "图2保留，尾巴格不会撞面",
+          "text": "图2右边多出一个再往下拐的尾巴，但它折起后会成为最后一个独立面，不会和前面已经占掉的位置重合。"
         },
         {
           "id": "s3",
           "kind": "verification",
-          "title": "验证答案",
-          "text": "得到结果后，再回到原题核对一次，确认没有漏条件或看错图。"
+          "title": "图3排除，末端回折后会撞位",
+          "text": "图3右端往下拐出的那一格折起来后，会和另一面争同一个方向，出现撞面，所以不能保留。"
+        },
+        {
+          "id": "s4",
+          "kind": "verification",
+          "title": "图4保留，错位双排仍能分到6个方向",
+          "text": "图4上排和下排虽然拉得比较长，但它们是错位连接的，折起后会落到不同方向，因此可以保留。"
+        },
+        {
+          "id": "s5",
+          "kind": "verification",
+          "title": "图5排除，按终审记录收口",
+          "text": "图5在当前站内截图里位于最右侧边缘，页面按终审记录收口为排除。复盘重点是记住：一旦折起后方向重合，这个图就不能算展开图。"
         }
       ],
       "wrongReasons": [
